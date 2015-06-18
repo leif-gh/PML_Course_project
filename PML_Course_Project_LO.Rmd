@@ -1,7 +1,7 @@
 ---
 output: html_document
 ---
-#Analyses of gym motion characteristiccs using machine learning approach.#
+#Analyses of gym motion characteristics using machine learning approach.#
 #####Leif Olausson, June 2015#####
 
 ###Overview###
