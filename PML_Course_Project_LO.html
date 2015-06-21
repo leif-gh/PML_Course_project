@@ -93,6 +93,7 @@ img {
 <div id="removing-near-zero-variables." class="section level4">
 <h4><br />Removing near zero variables.</h4>
 <pre><code>  # Identifying and removing near zero value variablessv variables
+  library(caret)
   nsv_list &lt;- nearZeroVar(training, saveMetrics = FALSE)    # postion of nsv variables (columns)
   training_nsv_list &lt;- training[, -c(nsv_list)]           # removing nsv variables from training set</code></pre>
 </div>
@@ -179,11 +180,11 @@ img {
   rfImp &lt;- varImp(modFit_60, scale = FALSE)
   var_no &lt;- c(which(rfImp$importance[, 1]&gt;152.9), 53)
   training_60_impvar &lt;- training_60[, var_no]</code></pre>
-<p>With random forests as model and the same training parameters as for modFit_60 the OOB estimate of error rate increased from 0.9 to 1.2. The running time was more than halved.</p>
+<p>With random forests as model and the same training parameters as for modFit_60 the OOB estimate of error rate increased from 0.9 to 1.2. The running time (training) was more than halved.</p>
 </div>
 <div id="testing-various-models-using-the-20-most-influential-predictors" class="section level4">
 <h4><br />Testing various models using the 20 most influential predictors</h4>
-<p>In addition to random forests (rf) other models were tested with the training data consisting of the twenty most important varioables. The purpose was to investigate the relative difference in misclassification rates for the models. To reduce running time the number 2 was used for K-fold cv. Models tested were Generalized Boosted Model (gbm), Naive Bayes (nb), Regularized Discriminant Analysis (rda) and finally Linear Discriminant Analysis (lda). The error rate on the testing set increased in the same order as then models are mentioned. The gbm model, the most accurate of the alternative studied models, showed a misclassification error of 5.1% where rf achieved 1.3%. This is the main reason for choosing random forest as the final model in this project.</p>
+<p>In addition to random forests (rf) other models were tested with the training data consisting of the twenty most important varioables. The purpose was to investigate the difference in misclassification rates for the models. To reduce running time the number two was used for K-fold cv. Models tested were Generalized Boosted Model (gbm), Naive Bayes (nb), Regularized Discriminant Analysis (rda) and finally Linear Discriminant Analysis (lda). The error rate on the testing set increased in the order the models are mentioned. The gbm model, the most accurate of the alternative studied models, showed a misclassification error of 5.1% where rf achieved 1.3%. This is the main reason for choosing random forest as the final model in this project.</p>
 </div>
 </div>
 <div id="concluding-remarks" class="section level3">
